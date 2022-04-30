@@ -33,13 +33,14 @@ import java.util.Map;
 public final class KeyboardTheme implements Comparable<KeyboardTheme> {
 
     public static final String THEME_FAMILY_MATERIAL = "Material";
+    public static final String THEME_FAMILY_BB = "BB";
     public static final String THEME_FAMILY_HOLO = "Holo (Legacy)";
     public static final String THEME_VARIANT_LIGHT = "Light";
     public static final String THEME_VARIANT_DARK = "Dark";
     public static final String THEME_VARIANT_WHITE = "White";
     public static final String THEME_VARIANT_BLUE = "Blue";
 
-    public static final String[] THEME_FAMILIES = {THEME_FAMILY_MATERIAL, THEME_FAMILY_HOLO};
+    public static final String[] THEME_FAMILIES = {THEME_FAMILY_MATERIAL, THEME_FAMILY_HOLO, THEME_FAMILY_BB};
     public static final Map<String, String[]> THEME_VARIANTS = new HashMap<>();
 
     static {
@@ -67,6 +68,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     public static final int THEME_ID_LXX_AUTO = 9;
     public static final int THEME_ID_LXX_AUTO_BORDER = 8;
     public static final int DEFAULT_THEME_ID = THEME_ID_LXX_DARK_BORDER;
+    public static final int THEME_ID_BB = 37;
 
     private static KeyboardTheme[] AVAILABLE_KEYBOARD_THEMES;
 
@@ -100,6 +102,9 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
                 // This has never been selected as default theme.
                 VERSION_CODES.LOLLIPOP),
         new KeyboardTheme(THEME_ID_LXX_AUTO_AMOLED, "LXXAutoAmoled", R.style.KeyboardTheme_LXX_Auto_Amoled,
+                // This has never been selected as default theme.
+                VERSION_CODES.LOLLIPOP),
+        new KeyboardTheme(THEME_ID_BB, "BB", R.style.KeyboardTheme_BB,
                 // This has never been selected as default theme.
                 VERSION_CODES.LOLLIPOP),
     };
@@ -254,6 +259,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
                 return THEME_VARIANT_WHITE;
             case THEME_ID_ICS:
                 return THEME_VARIANT_BLUE;
+            case THEME_ID_BB:
             default:
                 return null;
         }
@@ -266,6 +272,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
             case THEME_ID_LXX_AUTO_BORDER:
             case THEME_ID_ICS:
             case THEME_ID_KLP:
+            case THEME_ID_BB:
                 return true;
             default:
                 return false;
