@@ -23,6 +23,7 @@ import android.content.res.TypedArray;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import org.dslul.openboard.inputmethod.keyboard.internal.BatchInputArbiter;
 import org.dslul.openboard.inputmethod.keyboard.internal.BatchInputArbiter.BatchInputArbiterListener;
@@ -918,8 +919,20 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
             return;
         }
 
-        if (oldKey != null && oldKey.getCode() == Constants.CODE_DELETE && Settings.getInstance().getCurrent().mDeleteSwipeEnabled) {
+        if (oldKey != null && Settings.getInstance().getCurrent().mDeleteSwipeEnabled) {
             //Delete slider
+            int steps = (x - mStartX) / sPointerStep;
+            if (abs(steps) > 2 || (mCursorMoved && steps != 0)) {
+                sTimerProxy.cancelKeyTimersOf(this);
+                mCursorMoved = true;
+                mStartX += steps * sPointerStep;
+                sListener.onMoveDeletePointer(steps);
+            }
+            return;
+        }
+
+        if (oldKey != null && Settings.getInstance().getCurrent().mDeleteSwipeEnabled) {
+            //Delete one word slider
             int steps = (x - mStartX) / sPointerStep;
             if (abs(steps) > 2 || (mCursorMoved && steps != 0)) {
                 sTimerProxy.cancelKeyTimersOf(this);
@@ -1006,7 +1019,7 @@ public final class PointerTracker implements PointerTrackerQueue.Element,
         // Release the last pressed key.
         setReleasedKeyGraphics(currentKey, true /* withAnimation */);
 
-        if(mCursorMoved && currentKey.getCode() == Constants.CODE_DELETE) {
+        if(mCursorMoved) {
             sListener.onUpWithDeletePointerActive();
         }
 

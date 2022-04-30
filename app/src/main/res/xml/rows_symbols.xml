@@ -47,7 +47,7 @@
         latin:keyWidth="10%p"
     >
         <include
-            latin:keyboardLayout="@xml/rowkeys_symbols2"
+            latin:keyboardLayout="@xml/rowkeys_symbols2_bb"
             latin:keyXPos="5%p" />
     </Row>
     <Row
@@ -58,7 +58,7 @@
             latin:keyWidth="15%p"
             latin:visualInsetsRight="1%p" />
         <include
-            latin:keyboardLayout="@xml/rowkeys_symbols3" />
+            latin:keyboardLayout="@xml/rowkeys_symbols3_bb" />
         <Key
             latin:keyStyle="deleteKeyStyle"
             latin:keyWidth="fillRight"
@@ -72,7 +72,7 @@
             latin:keyStyle="toAlphaKeyStyle"
             latin:keyWidth="15%p" />
         <include
-            latin:keyboardLayout="@xml/row_symbols4" />
+            latin:keyboardLayout="@xml/row_symbols4_bb" />
         <Key
             latin:keyStyle="enterKeyStyle"
             latin:keyWidth="fillRight" />

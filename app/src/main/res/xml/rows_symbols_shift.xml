@@ -62,7 +62,7 @@
             latin:keyStyle="toAlphaKeyStyle"
             latin:keyWidth="15%p" />
         <include
-            latin:keyboardLayout="@xml/row_symbols_shift4" />
+            latin:keyboardLayout="@xml/row_symbols_shift4_bb" />
         <Key
             latin:keyStyle="enterKeyStyle"
             latin:keyWidth="fillRight" />
